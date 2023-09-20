@@ -16,7 +16,12 @@ class MainActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(binding.root)
 
-        val intent = Intent(this, ButtonControlActivity::class.java)
-        startActivity(intent)
+        /*val intent = Intent(this, ButtonControlActivity::class.java)
+        startActivity(intent)*/
+
+        binding.connectButton.setOnClickListener {
+            val intent = Intent(this, ConnectivityActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
