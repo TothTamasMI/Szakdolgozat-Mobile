@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_view_width">150dp</dimen>
+    <dimen name="image_view_height">150dp</dimen>
+    <dimen name="connectivity_activity_margins">30dp</dimen>
+    <dimen name="back_button_margins">20dp</dimen>
+    <dimen name="back_button_width">50dp</dimen>
+    <dimen name="back_button_height">50dp</dimen>
+</resources>

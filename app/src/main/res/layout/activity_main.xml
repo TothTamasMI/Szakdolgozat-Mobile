@@ -15,10 +15,10 @@
         android:text="@string/connect_button_text" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/controlButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/control_button_text" />
 
     <Button
         android:id="@+id/button9"
