@@ -33,9 +33,16 @@ class ConnectivityActivity : Activity() {
         binding = ActivityConnectBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.backButton.setOnClickListener {
+            onBackPressed()
+        }
+
         binding.searchForDevicesButton.setOnClickListener {
             setUpBluetooth()
-            connectToDevice()
+            if(connectToDevice()){
+                intent = Intent(this, ButtonControlActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

@@ -27,6 +27,33 @@ class ButtonControlActivity : AppCompatActivity() {
             }
             false
         }
+
+        binding.downButton.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                sendBackwardCommand()
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                sendDefaultCommand()
+            }
+            false
+        }
+
+        binding.rightButton.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                sendRightCommand()
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                sendDefaultCommand()
+            }
+            false
+        }
+
+        binding.leftButton.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                sendLeftCommand()
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                sendDefaultCommand()
+            }
+            false
+        }
     }
 
 
