@@ -54,6 +54,7 @@ class ButtonControlActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun setUpBluetooth(): Boolean {
         var found = false
         val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
