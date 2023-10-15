@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Szakdolgozat</string>
 
-    <string name="connect_button_text">Connect to car</string>
-
     <string name="bluetooth_icon_description">Indicates the status of the bluetooth connection</string>
     <string name="back_button_description">Back button</string>
     <string name="turn_on_button_text">Turn bluetooth ON</string>
-    <string name="search_button_text">Refresh</string>
+    <string name="connect_button_text">Connect to car</string>
     <string name="control_button_text">Control car</string>
+
+    <string name="about_button_text">About Page</string>
 </resources>

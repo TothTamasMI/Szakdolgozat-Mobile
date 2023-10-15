@@ -18,6 +18,8 @@ import java.util.UUID
 
 class ConnectivityActivity : Activity() {
 
+    //Disabled -> Enabled -> Searching -> Connected
+
     private lateinit var binding : ActivityConnectBinding
 
     companion object {

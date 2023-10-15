@@ -4,19 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blue">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/backButton"
-        android:layout_width="@dimen/back_button_width"
-        android:layout_height="@dimen/back_button_height"
+        android:layout_width="@dimen/connectivity_activity_back_button_width"
+        android:layout_height="@dimen/connectivity_activity_back_button_height"
         android:clickable="true"
         android:background="@drawable/rounded_button"
         android:drawableStart="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="@dimen/back_button_margins"
-        android:layout_marginTop="@dimen/back_button_margins"
+        android:layout_marginStart="@dimen/connectivity_activity_back_button_margins"
+        android:layout_marginTop="@dimen/connectivity_activity_back_button_margins"
         android:contentDescription="@string/back_button_description"
         android:focusable="true" />
 
@@ -34,32 +35,50 @@
 
         <ImageView
             android:id="@+id/bluetoothIconImageView"
-            android:layout_width="@dimen/image_view_width"
-            android:layout_height="@dimen/image_view_height"
+            android:layout_width="@dimen/connectivity_activity_image_view_width"
+            android:layout_height="@dimen/connectivity_activity_image_view_height"
             android:contentDescription="@string/bluetooth_icon_description"
-            android:src="@drawable/ic_bluetooth_disabled" />
+            android:src="@drawable/ic_bluetooth_disabled"
+            app:tint="@color/white" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/turnOnButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/connectivity_activity_margins"
-            android:text="@string/turn_on_button_text" />
+            android:text="@string/turn_on_button_text"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="@dimen/connectivity_activity_button_size"
+            android:padding="@dimen/connectivity_activity_button_padding"
+            android:background="@drawable/rounded_button"
+            />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/searchForDevicesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/connectivity_activity_margins"
-            android:text="@string/search_button_text" />
+            android:text="@string/connect_button_text"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="@dimen/connectivity_activity_button_size"
+            android:padding="@dimen/connectivity_activity_button_padding"
+            android:background="@drawable/rounded_button"
+            />
 
-        <ListView
-            android:id="@+id/availableDevicesList"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/controlDeviceButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/connectivity_activity_margins"
-            android:visibility="invisible"
-            tools:visibility="visible" />
+            android:text="@string/control_button_text"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="@dimen/connectivity_activity_button_size"
+            android:padding="@dimen/connectivity_activity_button_padding"
+            android:background="@drawable/rounded_button"
+            />
 
     </LinearLayout>
 
