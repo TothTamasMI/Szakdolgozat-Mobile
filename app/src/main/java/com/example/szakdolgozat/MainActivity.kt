@@ -20,10 +20,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ConnectivityActivity::class.java)
             startActivity(intent)
         }
-
-        binding.controlButton.setOnClickListener {
-            val intent = Intent(this, ButtonControlActivity::class.java)
-            startActivity(intent)
-        }
     }
 }

@@ -55,7 +55,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/searchForDevicesButton"
+            android:id="@+id/connectToCarButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/connectivity_activity_margins"
@@ -68,7 +68,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/controlDeviceButton"
+            android:id="@+id/controlCarButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/connectivity_activity_margins"

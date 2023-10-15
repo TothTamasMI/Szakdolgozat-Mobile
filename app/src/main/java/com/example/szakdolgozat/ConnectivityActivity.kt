@@ -1,16 +1,14 @@
 package com.example.szakdolgozat
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothManager
 import android.bluetooth.BluetoothSocket
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import com.example.szakdolgozat.databinding.ActivityConnectBinding
 import java.io.IOException
 import java.io.OutputStream
@@ -21,10 +19,13 @@ class ConnectivityActivity : Activity() {
     //Disabled -> Enabled -> Searching -> Connected
 
     private lateinit var binding : ActivityConnectBinding
+    private lateinit var bluetoothManager: BluetoothManager
+    private lateinit var bluetoothAdapter : BluetoothAdapter
+    private var bluetoothStatus = Status.DISABLED
 
     companion object {
         const val DEVICE_ADDRESS = "00:22:08:01:13:CD"
-        val PORT_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb")
+        val PORT_UUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb")
         var device: BluetoothDevice? = null
         var socket: BluetoothSocket? = null
         var outputStream: OutputStream? = null
@@ -32,15 +33,42 @@ class ConnectivityActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityConnectBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setUpBluetooth()
+        bluetoothStatus = if (isBluetoothEnabled()){
+            Status.ENABLED
+        }else{
+            Status.DISABLED
+        }
+        refreshBluetoothImage()
 
         binding.backButton.setOnClickListener {
             onBackPressed()
         }
 
-        binding.searchForDevicesButton.setOnClickListener {
-            setUpBluetooth()
+        binding.turnOnButton.setOnClickListener {
+            turnOnBluetooth()
+            bluetoothStatus = if (isBluetoothEnabled()){
+                Status.ENABLED
+            }else{
+                Status.DISABLED
+            }
+            refreshBluetoothImage()
+        }
+
+        binding.connectToCarButton.setOnClickListener {
+            bluetoothStatus = if(connectToCar()){
+                Status.CONNECTED
+            } else{
+                Status.ENABLED
+            }
+            refreshBluetoothImage()
+        }
+
+        binding.controlCarButton.setOnClickListener {
             if(connectToDevice()){
                 intent = Intent(this, ButtonControlActivity::class.java)
                 startActivity(intent)
@@ -48,33 +76,30 @@ class ConnectivityActivity : Activity() {
         }
     }
 
+    private fun setUpBluetooth(){
+        bluetoothManager = getSystemService(BluetoothManager::class.java)
+        bluetoothAdapter = bluetoothManager.adapter
+
+    }
+
+    private fun turnOnBluetooth(){
+        if (!isBluetoothEnabled()) {
+            val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+            startActivityForResult(enableBtIntent, 0)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        recreate()
+    }
+
     @SuppressLint("SuspiciousIndentation")
-    private fun setUpBluetooth(): Boolean {
+    private fun connectToCar(): Boolean {
+        bluetoothStatus = Status.SEARCHING
+        refreshBluetoothImage()
         var found = false
-        val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-        if (bluetoothAdapter == null) //Checks if the device supports bluetooth
-        {
-            Toast.makeText(
-                applicationContext,
-                "Device doesn't support bluetooth",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-        if (!bluetoothAdapter!!.isEnabled) //Checks if bluetooth is enabled. If not, the program will ask permission from the user to enable it
-        {
-            val enableAdapter = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.BLUETOOTH_CONNECT
-                ) != PackageManager.PERMISSION_GRANTED
-            )
-                startActivityForResult(enableAdapter, 0)
-            try {
-                Thread.sleep(1000)
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
-            }
-        }
+
         val bondedDevices = bluetoothAdapter.bondedDevices
         if (bondedDevices.isEmpty()) //Checks for paired bluetooth devices
         {
@@ -95,17 +120,7 @@ class ConnectivityActivity : Activity() {
     private fun connectToDevice(): Boolean {
         var connected = true
         try {
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.BLUETOOTH_CONNECT
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-
-            }
-            socket =
-                device!!.createRfcommSocketToServiceRecord(
-                    PORT_UUID
-                ) //Creates a socket to handle the outgoing connection
+            socket = device!!.createRfcommSocketToServiceRecord(PORT_UUID) //Creates a socket to handle the outgoing connection
             socket?.connect()
             Toast.makeText(
                 applicationContext,
@@ -123,5 +138,18 @@ class ConnectivityActivity : Activity() {
             }
         }
         return connected
+    }
+
+    private fun refreshBluetoothImage(){
+        when(bluetoothStatus){
+            Status.DISABLED -> binding.bluetoothIconImageView.setImageResource(R.drawable.ic_bluetooth_disabled)
+            Status.ENABLED -> binding.bluetoothIconImageView.setImageResource(R.drawable.ic_bluetooth_enabled)
+            Status.SEARCHING -> binding.bluetoothIconImageView.setImageResource(R.drawable.ic_bluetooth_searching)
+            Status.CONNECTED -> binding.bluetoothIconImageView.setImageResource(R.drawable.ic_bluetooth_connected)
+        }
+    }
+
+    private fun isBluetoothEnabled() : Boolean{
+        return bluetoothAdapter.isEnabled
     }
 }
