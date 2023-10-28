@@ -60,7 +60,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/optionsButton"
+        android:id="@+id/choreographyButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
 

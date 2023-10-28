@@ -15,9 +15,6 @@ import java.io.OutputStream
 import java.util.UUID
 
 class ConnectivityActivity : Activity() {
-
-    //Disabled -> Enabled -> Searching -> Connected
-
     private lateinit var binding : ActivityConnectBinding
     private lateinit var bluetoothManager: BluetoothManager
     private lateinit var bluetoothAdapter : BluetoothAdapter
@@ -38,12 +35,6 @@ class ConnectivityActivity : Activity() {
         setContentView(binding.root)
 
         setUpBluetooth()
-        bluetoothStatus = if (isBluetoothEnabled()){
-            Status.ENABLED
-        }else{
-            Status.DISABLED
-        }
-        refreshBluetoothImage()
 
         binding.backButton.setOnClickListener {
             onBackPressed()
@@ -80,6 +71,12 @@ class ConnectivityActivity : Activity() {
         bluetoothManager = getSystemService(BluetoothManager::class.java)
         bluetoothAdapter = bluetoothManager.adapter
 
+        bluetoothStatus = if (isBluetoothEnabled()){
+            Status.ENABLED
+        }else{
+            Status.DISABLED
+        }
+        refreshBluetoothImage()
     }
 
     private fun turnOnBluetooth(){

@@ -54,6 +54,15 @@ class ButtonControlActivity : AppCompatActivity() {
             }
             false
         }
+
+        binding.choreographyButton.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                sendChoreographyCommand()
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                sendDefaultCommand()
+            }
+            false
+        }
     }
 
 
@@ -68,6 +77,9 @@ class ButtonControlActivity : AppCompatActivity() {
 
     private fun sendDefaultCommand(){
         sendCommand("D")
+    }
+    private fun sendChoreographyCommand(){
+        sendCommand("C")
     }
 
     private fun sendForwardCommand(){

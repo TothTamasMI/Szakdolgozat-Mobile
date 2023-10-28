@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         binding.connectButton.setOnClickListener {
             val intent = Intent(this, ConnectivityActivity::class.java)
             startActivity(intent)

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Szakdolgozat</string>
+    <string name="app_name">Car Controller</string>
 
     <string name="bluetooth_icon_description">Indicates the status of the bluetooth connection</string>
     <string name="back_button_description">Back button</string>

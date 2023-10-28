@@ -21,65 +21,62 @@
         android:contentDescription="@string/back_button_description"
         android:focusable="true" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/connectivity_activity_margins"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".ConnectivityActivity">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/connectivity_activity_margins"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ConnectivityActivity">
 
-        <ImageView
-            android:id="@+id/bluetoothIconImageView"
-            android:layout_width="@dimen/connectivity_activity_image_view_width"
-            android:layout_height="@dimen/connectivity_activity_image_view_height"
-            android:contentDescription="@string/bluetooth_icon_description"
-            android:src="@drawable/ic_bluetooth_disabled"
-            app:tint="@color/white" />
+            <ImageView
+                android:id="@+id/bluetoothIconImageView"
+                android:layout_width="@dimen/connectivity_activity_image_view_width"
+                android:layout_height="@dimen/connectivity_activity_image_view_height"
+                android:contentDescription="@string/bluetooth_icon_description"
+                android:src="@drawable/ic_bluetooth_disabled"
+                app:tint="@color/white" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/turnOnButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/connectivity_activity_margins"
-            android:text="@string/turn_on_button_text"
-            android:textColor="@color/blue"
-            android:textStyle="bold"
-            android:textSize="@dimen/connectivity_activity_button_size"
-            android:padding="@dimen/connectivity_activity_button_padding"
-            android:background="@drawable/rounded_button"
-            />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/turnOnButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/connectivity_activity_margins"
+                android:background="@drawable/rounded_button"
+                android:padding="@dimen/connectivity_activity_button_padding"
+                android:text="@string/turn_on_button_text"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/connectivity_activity_button_size"
+                android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/connectToCarButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/connectivity_activity_margins"
-            android:text="@string/connect_button_text"
-            android:textColor="@color/blue"
-            android:textStyle="bold"
-            android:textSize="@dimen/connectivity_activity_button_size"
-            android:padding="@dimen/connectivity_activity_button_padding"
-            android:background="@drawable/rounded_button"
-            />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/connectToCarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/connectivity_activity_margins"
+                android:background="@drawable/rounded_button"
+                android:padding="@dimen/connectivity_activity_button_padding"
+                android:text="@string/connect_button_text"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/connectivity_activity_button_size"
+                android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/controlCarButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/connectivity_activity_margins"
-            android:text="@string/control_button_text"
-            android:textColor="@color/blue"
-            android:textStyle="bold"
-            android:textSize="@dimen/connectivity_activity_button_size"
-            android:padding="@dimen/connectivity_activity_button_padding"
-            android:background="@drawable/rounded_button"
-            />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/controlCarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/connectivity_activity_margins"
+                android:background="@drawable/rounded_button"
+                android:padding="@dimen/connectivity_activity_button_padding"
+                android:text="@string/control_button_text"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/connectivity_activity_button_size"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+        </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
