@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    
-    <!--Permissions-->
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
@@ -19,18 +18,23 @@
         android:theme="@style/Theme.Szakdolgozat"
         tools:targetApi="31">
         <activity
+            android:name=".AboutPageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_about_page"
+            android:theme="@style/Theme.Szakdolgozat" />
+        <activity
             android:name=".ConnectivityActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ButtonControlActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

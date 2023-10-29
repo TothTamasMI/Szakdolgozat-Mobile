@@ -17,5 +17,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ConnectivityActivity::class.java)
             startActivity(intent)
         }
+
+        binding.aboutButton.setOnClickListener {
+            val intent = Intent(this, AboutPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
