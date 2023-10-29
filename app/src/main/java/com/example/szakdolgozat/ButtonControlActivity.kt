@@ -2,6 +2,7 @@ package com.example.szakdolgozat
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,8 @@ class ButtonControlActivity : AppCompatActivity() {
         binding = ActivityButtonControlBinding.inflate(layoutInflater)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(binding.root)
+
+        var isInChoreographyMode = false
 
         binding.upButton.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
@@ -41,7 +44,7 @@ class ButtonControlActivity : AppCompatActivity() {
             if (event.action == MotionEvent.ACTION_DOWN) {
                 sendRightCommand()
             } else if (event.action == MotionEvent.ACTION_UP) {
-                sendDefaultCommand()
+                sendMiddleCommand()
             }
             false
         }
@@ -50,17 +53,19 @@ class ButtonControlActivity : AppCompatActivity() {
             if (event.action == MotionEvent.ACTION_DOWN) {
                 sendLeftCommand()
             } else if (event.action == MotionEvent.ACTION_UP) {
-                sendDefaultCommand()
+                sendMiddleCommand()
             }
             false
         }
 
-        binding.choreographyButton.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
+        binding.choreographyButton.setOnClickListener {
+            if (!isInChoreographyMode) {
                 sendChoreographyCommand()
-            } else if (event.action == MotionEvent.ACTION_UP) {
+                isInChoreographyMode
+            } else{
                 sendDefaultCommand()
             }
+            isInChoreographyMode = !isInChoreographyMode
             false
         }
     }
@@ -68,11 +73,12 @@ class ButtonControlActivity : AppCompatActivity() {
 
 
     private fun sendCommand(command: String){
-        try {
+        /*try {
             ConnectivityActivity.outputStream?.write(command.toByteArray())
         } catch (e: IOException) {
             e.printStackTrace()
-        }
+        }*/
+        Log.d("Tomszy", command)
     }
 
     private fun sendDefaultCommand(){
@@ -98,4 +104,7 @@ class ButtonControlActivity : AppCompatActivity() {
         sendCommand("L")
     }
 
+    private fun sendMiddleCommand(){
+        sendCommand("M")
+    }
 }

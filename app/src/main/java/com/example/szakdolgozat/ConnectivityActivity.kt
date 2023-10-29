@@ -51,7 +51,7 @@ class ConnectivityActivity : Activity() {
         }
 
         binding.connectToCarButton.setOnClickListener {
-            bluetoothStatus = if(connectToCar()){
+            bluetoothStatus = if(controlCar()){
                 Status.CONNECTED
             } else{
                 Status.ENABLED
@@ -60,7 +60,7 @@ class ConnectivityActivity : Activity() {
         }
 
         binding.controlCarButton.setOnClickListener {
-            if(connectToDevice()){
+            if(/*connectToDevice()*/ true){
                 intent = Intent(this, ButtonControlActivity::class.java)
                 startActivity(intent)
             }
@@ -92,7 +92,7 @@ class ConnectivityActivity : Activity() {
     }
 
     @SuppressLint("SuspiciousIndentation")
-    private fun connectToCar(): Boolean {
+    private fun controlCar(): Boolean {
         bluetoothStatus = Status.SEARCHING
         refreshBluetoothImage()
         var found = false
