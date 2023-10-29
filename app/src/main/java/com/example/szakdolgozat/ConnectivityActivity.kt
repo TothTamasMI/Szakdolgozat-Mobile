@@ -60,7 +60,7 @@ class ConnectivityActivity : Activity() {
         }
 
         binding.controlCarButton.setOnClickListener {
-            if(/*connectToDevice()*/ true){
+            if(connectToDevice()){
                 intent = Intent(this, ButtonControlActivity::class.java)
                 startActivity(intent)
             }
@@ -98,7 +98,7 @@ class ConnectivityActivity : Activity() {
         var found = false
 
         val bondedDevices = bluetoothAdapter.bondedDevices
-        if (bondedDevices.isEmpty()) //Checks for paired bluetooth devices
+        if (bondedDevices.isEmpty())
         {
             Toast.makeText(applicationContext, "Please pair the device first", Toast.LENGTH_SHORT)
                 .show()
@@ -117,7 +117,7 @@ class ConnectivityActivity : Activity() {
     private fun connectToDevice(): Boolean {
         var connected = true
         try {
-            socket = device!!.createRfcommSocketToServiceRecord(PORT_UUID) //Creates a socket to handle the outgoing connection
+            socket = device!!.createRfcommSocketToServiceRecord(PORT_UUID)
             socket?.connect()
             Toast.makeText(
                 applicationContext,
@@ -129,7 +129,7 @@ class ConnectivityActivity : Activity() {
         }
         if (connected) {
             try {
-                outputStream = socket!!.outputStream //gets the output stream of the socket
+                outputStream = socket!!.outputStream
             } catch (e: IOException) {
                 e.printStackTrace()
             }

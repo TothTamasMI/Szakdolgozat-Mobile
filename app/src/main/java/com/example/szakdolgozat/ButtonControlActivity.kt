@@ -73,11 +73,11 @@ class ButtonControlActivity : AppCompatActivity() {
 
 
     private fun sendCommand(command: String){
-        /*try {
+        try {
             ConnectivityActivity.outputStream?.write(command.toByteArray())
         } catch (e: IOException) {
             e.printStackTrace()
-        }*/
+        }
         Log.d("Tomszy", command)
     }
 
