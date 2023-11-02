@@ -28,6 +28,7 @@ class ButtonControlActivity : AppCompatActivity() {
             } else if (event.action == MotionEvent.ACTION_UP) {
                 sendDefaultCommand()
             }
+            isInChoreographyMode = false
             false
         }
 
@@ -37,6 +38,7 @@ class ButtonControlActivity : AppCompatActivity() {
             } else if (event.action == MotionEvent.ACTION_UP) {
                 sendDefaultCommand()
             }
+            isInChoreographyMode = false
             false
         }
 
@@ -46,6 +48,7 @@ class ButtonControlActivity : AppCompatActivity() {
             } else if (event.action == MotionEvent.ACTION_UP) {
                 sendMiddleCommand()
             }
+            isInChoreographyMode = false
             false
         }
 
@@ -55,6 +58,7 @@ class ButtonControlActivity : AppCompatActivity() {
             } else if (event.action == MotionEvent.ACTION_UP) {
                 sendMiddleCommand()
             }
+            isInChoreographyMode = false
             false
         }
 

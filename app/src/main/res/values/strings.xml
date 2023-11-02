@@ -9,4 +9,13 @@
 
     <string name="about_button_text">About Page</string>
     <string name="title_activity_about_page">AboutPageActivity</string>
+
+    <string name="about_page_title">Car Controller</string>
+    <string name="about_page_version">version: 1.0.0</string>
+    <string name="about_page_description">The topic of my thesis is to build a car, that can be controlled by a mobile application.\n\nThe source codes for each application are uploaded on the following links.\n\nMade by: Tamás Tóth 2023</string>
+    <string name="about_page_arduino">Arduino code: https://github.com/TothTamasMI/Szakdolgozat-Arduino</string>
+    <string name="about_page_arduino_link">https://github.com/TothTamasMI/Szakdolgozat-Arduino</string>
+    <string name="about_page_mobile">Android code: https://github.com/TothTamasMI/Szakdolgozat-Mobile</string>
+    <string name="about_page_mobile_link">https://github.com/TothTamasMI/Szakdolgozat-Mobile</string>
+
 </resources>
