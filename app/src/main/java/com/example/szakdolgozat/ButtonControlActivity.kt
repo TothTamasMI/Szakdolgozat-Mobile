@@ -8,6 +8,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.szakdolgozat.databinding.ActivityButtonControlBinding
 import java.io.IOException
+import kotlin.properties.Delegates
 
 class ButtonControlActivity : AppCompatActivity() {
 
@@ -23,49 +24,52 @@ class ButtonControlActivity : AppCompatActivity() {
         var isInChoreographyMode = false
 
         binding.upButton.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                sendForwardCommand()
-            } else if (event.action == MotionEvent.ACTION_UP) {
-                sendDefaultCommand()
+            if(!isInChoreographyMode){
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    sendForwardCommand()
+                } else if (event.action == MotionEvent.ACTION_UP) {
+                    sendDefaultCommand()
+                }
             }
-            isInChoreographyMode = false
             false
         }
 
         binding.downButton.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                sendBackwardCommand()
-            } else if (event.action == MotionEvent.ACTION_UP) {
-                sendDefaultCommand()
+            if(!isInChoreographyMode){
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    sendBackwardCommand()
+                } else if (event.action == MotionEvent.ACTION_UP) {
+                    sendDefaultCommand()
+                }
             }
-            isInChoreographyMode = false
             false
         }
 
         binding.rightButton.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                sendRightCommand()
-            } else if (event.action == MotionEvent.ACTION_UP) {
-                sendMiddleCommand()
+            if(!isInChoreographyMode){
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    sendRightCommand()
+                } else if (event.action == MotionEvent.ACTION_UP) {
+                    sendMiddleCommand()
+                }
             }
-            isInChoreographyMode = false
             false
         }
 
         binding.leftButton.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                sendLeftCommand()
-            } else if (event.action == MotionEvent.ACTION_UP) {
-                sendMiddleCommand()
+            if(!isInChoreographyMode){
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    sendLeftCommand()
+                } else if (event.action == MotionEvent.ACTION_UP) {
+                    sendMiddleCommand()
+                }
             }
-            isInChoreographyMode = false
             false
         }
 
         binding.choreographyButton.setOnClickListener {
             if (!isInChoreographyMode) {
                 sendChoreographyCommand()
-                isInChoreographyMode
             } else{
                 sendDefaultCommand()
             }
@@ -73,8 +77,6 @@ class ButtonControlActivity : AppCompatActivity() {
             false
         }
     }
-
-
 
     private fun sendCommand(command: String){
         try {

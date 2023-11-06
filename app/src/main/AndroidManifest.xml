@@ -20,6 +20,7 @@
         <activity
             android:name=".AboutPageActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_about_page"
             android:theme="@style/Theme.Szakdolgozat" />
         <activity
