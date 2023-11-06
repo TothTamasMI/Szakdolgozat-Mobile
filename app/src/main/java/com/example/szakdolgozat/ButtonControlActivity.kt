@@ -2,13 +2,11 @@ package com.example.szakdolgozat
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.szakdolgozat.databinding.ActivityButtonControlBinding
 import java.io.IOException
-import kotlin.properties.Delegates
 
 class ButtonControlActivity : AppCompatActivity() {
 
@@ -74,7 +72,6 @@ class ButtonControlActivity : AppCompatActivity() {
                 sendDefaultCommand()
             }
             isInChoreographyMode = !isInChoreographyMode
-            false
         }
     }
 
@@ -84,7 +81,6 @@ class ButtonControlActivity : AppCompatActivity() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        Log.d("Tomszy", command)
     }
 
     private fun sendDefaultCommand(){

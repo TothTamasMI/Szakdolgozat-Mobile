@@ -51,18 +51,26 @@ class ConnectivityActivity : Activity() {
         }
 
         binding.connectToCarButton.setOnClickListener {
-            bluetoothStatus = if(controlCar()){
-                Status.CONNECTED
-            } else{
-                Status.ENABLED
+            if(bluetoothStatus == Status.ENABLED){
+                if(controlCar()){
+                    bluetoothStatus = Status.CONNECTED
+                }
+            } else {
+                Toast.makeText(applicationContext, "Please activate the Bluetooth first", Toast.LENGTH_SHORT)
+                    .show()
             }
             refreshBluetoothImage()
         }
 
         binding.controlCarButton.setOnClickListener {
-            if(connectToDevice()){
-                intent = Intent(this, ButtonControlActivity::class.java)
-                startActivity(intent)
+            if(bluetoothStatus ==Status.CONNECTED){
+                if(connectToDevice()){
+                    intent = Intent(this, ButtonControlActivity::class.java)
+                    startActivity(intent)
+                }
+            } else {
+                Toast.makeText(applicationContext, "Please connect to the device first", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
